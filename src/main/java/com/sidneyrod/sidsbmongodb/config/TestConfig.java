@@ -27,6 +27,4 @@ public class TestConfig implements CommandLineRunner {
 		userRepository.saveAll(Arrays.asList(beatrice, michael, mark));
 		
 	}
-	
-	
 }
