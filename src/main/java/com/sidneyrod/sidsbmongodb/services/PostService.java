@@ -1,5 +1,6 @@
 package com.sidneyrod.sidsbmongodb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,7 @@ public class PostService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
 		}
 	
-/*	public User fromDTO(UserDTO objDTO) {
-		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
+	public List<Post> findByTitle(String text) {
+		return repository.findByTitleContainingIgnoreCase(text);
 	}
-*/
 }
