@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.sidneyrod.sidsbmongodb.domain.Post;
 import com.sidneyrod.sidsbmongodb.domain.User;
 import com.sidneyrod.sidsbmongodb.dto.AuthorDTO;
+import com.sidneyrod.sidsbmongodb.dto.CommentDTO;
 import com.sidneyrod.sidsbmongodb.repositories.PostRepository;
 import com.sidneyrod.sidsbmongodb.repositories.UserRepository;
 
@@ -40,6 +41,13 @@ public class TestConfig implements CommandLineRunner {
 		
 		Post post1 = new Post(null, sdf.parse("12/01/2021"), "On Vacation", "Traveling to rest!", new AuthorDTO(beatrice));
 		Post post2 = new Post(null, sdf.parse("16/01/2021"), "Backing", "Returning to home!", new AuthorDTO(beatrice));
+		
+		CommentDTO c1 = new CommentDTO("Have a good trip!", sdf.parse("12/01/2021"), new AuthorDTO(michael));
+		CommentDTO c2 = new CommentDTO("So good! Enjoy each moment!", sdf.parse("13/01/2021"), new AuthorDTO(mark));
+		CommentDTO c3 = new CommentDTO("Have a good back!", sdf.parse("16/01/2021"), new AuthorDTO(michael));
+		
+		post1.getComments().addAll(Arrays.asList(c1, c2));
+		post2.getComments().addAll(Arrays.asList(c3));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 		

@@ -11,7 +11,6 @@ public class AuthorDTO implements Serializable {
 	private String name;
 	
 	public AuthorDTO() {
-		
 	}
 	
 	public AuthorDTO(User obj) {
