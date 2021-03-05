@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sidneyrod.sidsbmongodb.domain.User;
+import com.sidneyrod.sidsbmongodb.dto.UserDTO;
 import com.sidneyrod.sidsbmongodb.repositories.UserRepository;
 import com.sidneyrod.sidsbmongodb.services.exceptions.ObjectNotFoundException;
 
@@ -24,6 +25,14 @@ public class UserService {
 		Optional<User> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
 		}
+	
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
+	}
 
 	
 }
